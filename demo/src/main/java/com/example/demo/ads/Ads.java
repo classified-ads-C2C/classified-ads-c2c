@@ -1,5 +1,10 @@
 package com.example.demo.ads;
 
+import com.example.demo.category.Category;
+import com.example.demo.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,16 +19,42 @@ public class Ads{
     private String image;
     private String location;
 
+
+//    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+//    @JoinColumn(name = "user_id", nullable = false)
+//    @JsonProperty(access = JsonProperty.Access.READ_WRITE) // ارسل معلومات المدرس ID  في البوست مان Json
+//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties("ads")
+    @JsonProperty(access = JsonProperty.Access.READ_WRITE)
+    private User user;
+
+
+//    @ManyToOne(fetch = FetchType.EAGER, optional = false) يمنع ان يكون الفورن كي نلللل
+//    @JoinColumn(name = "category_id", nullable = false)
+//    @JsonProperty(access = JsonProperty.Access.READ_WRITE) // ارسل معلومات المدرس ID  في البوست مان Json
+//    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    @JsonIgnoreProperties("ads")
+    @JsonProperty(access = JsonProperty.Access.READ_WRITE)
+    private Category category;
+
+
     public Ads(){
 
     }
 
-    public Ads(Long id, String title, String description, String image, String location) {
+    public Ads(Long id, String title, String description, String image, String location, User user, Category category) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.image = image;
         this.location = location;
+        this.user = user;
+        this.category = category;
     }
 
     public Long getId() {
@@ -64,5 +95,21 @@ public class Ads{
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User users) {
+        this.user = users;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

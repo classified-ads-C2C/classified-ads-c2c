@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/ads")
+@CrossOrigin("*")
 public class AdsController {
 
     @Autowired
