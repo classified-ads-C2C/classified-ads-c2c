@@ -20,21 +20,12 @@ public class Ads{
     private String location;
 
 
-//    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-//    @JoinColumn(name = "user_id", nullable = false)
-//    @JsonProperty(access = JsonProperty.Access.READ_WRITE) // ارسل معلومات المدرس ID  في البوست مان Json
-//    private User user;
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnoreProperties("ads")
     @JsonProperty(access = JsonProperty.Access.READ_WRITE)
     private User user;
 
-
-//    @ManyToOne(fetch = FetchType.EAGER, optional = false) يمنع ان يكون الفورن كي نلللل
-//    @JoinColumn(name = "category_id", nullable = false)
-//    @JsonProperty(access = JsonProperty.Access.READ_WRITE) // ارسل معلومات المدرس ID  في البوست مان Json
-//    private Category category;
 
     @ManyToOne
     @JoinColumn(name = "category_id")

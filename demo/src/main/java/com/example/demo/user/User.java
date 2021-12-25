@@ -20,18 +20,10 @@ public class User {
     private String phone;
     private String password;
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 
     @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private Set<Ads> ads;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "role_id")
-//    @JsonIgnoreProperties("user")
-//    @JsonProperty(access = JsonProperty.Access.READ_WRITE)  forEach
-//    private Role role;
 
 
     @ManyToMany(fetch = FetchType.EAGER)

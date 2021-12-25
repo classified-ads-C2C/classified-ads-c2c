@@ -16,10 +16,6 @@ public class Role {
     private Long id;
     private String name;
 
-//    @JsonIgnoreProperties("role")
-//    @OneToMany(mappedBy = "role",cascade = CascadeType.ALL) ForEach
-//    private Set<User> user;
-
     public Role(){
 
     }

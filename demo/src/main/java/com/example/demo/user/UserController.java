@@ -15,7 +15,6 @@ public class UserController {
 
     @PostMapping
     public User createUser(@RequestBody Form form){
-//        System.out.println(user.getPassword());
         return userService.createUser(form);
     }
 

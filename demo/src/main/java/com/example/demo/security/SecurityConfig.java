@@ -53,9 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             cors.setAllowedHeaders(List.of("*"));
             return cors;});
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//        // Define the authorization patterns below
-//       http.authorizeRequests().anyRequest().permitAll();
-//        http.authorizeRequests().antMatchers("/api/user/**").permitAll();
+
         http.authorizeRequests().antMatchers(GET,"/api/user/**").hasAnyAuthority("user");
         http.authorizeRequests().antMatchers(POST,"/api/roles").permitAll();
         http.authorizeRequests().antMatchers("/api/category/byName/**").permitAll();

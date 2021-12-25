@@ -16,8 +16,6 @@ public class Category {
     private Long id;
     private String categoryName;
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("category")
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
     private Set<Ads> ads;
