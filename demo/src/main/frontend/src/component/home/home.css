@@ -1,3 +1,4 @@
+
 /**********  [header]  **********/
 
 .header{
@@ -16,11 +17,38 @@
     font-size: 35px;
     color: #fff;
 }
-.home, .edit{
-    width: 500px;
+.bi-plus-lg{
+  margin-left: 500px;
+    font-size: 35px;
+    color: #fff;
+}
+.bi-box-arrow-in-left{
+  margin-left: 500px;
+  font-size: 35px;
+  color: #fff;
+}
+.bi-pencil-square{
+  margin-left: 500px;
+  font-size: 35px;
+  color: #fff;
+}
+
+.home, .edit, .add-ads, .editAds, .home-login{
+    width: 100px;
     margin-top: 15px;
     display: inline-block;
 
+}
+
+.btn-light{
+  width: 100px;
+  margin-top: -20px;
+
+}
+
+#logout:hover {
+
+  background-color: #ccc;
 }
 
 /*************** [search] ****************/
@@ -41,7 +69,6 @@
   }
    */
   form.example button {
-    float: left;
     width: 10%;
     height: 50px;
     padding: 10px;
@@ -54,6 +81,9 @@
     border-left: none;
     cursor: pointer;
   }
+  /* input{
+    margin-right: -100px;
+  } */
   
   form.example button:hover {
     background: #0b7dda;
@@ -95,4 +125,20 @@
   
   li i:hover {
     background-color: #929aaa;
+  }
+
+  .home-button{
+    margin-left: 5px;
+  
+  }
+
+  /****** [all ads] *******/
+
+  .all-ads{
+    margin-top: 50px  ;
+  }
+  .ads{
+    width: 400px;
+    display: inline-block;
+    margin: 15px;
   }

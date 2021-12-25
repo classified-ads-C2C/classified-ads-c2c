@@ -27,16 +27,9 @@ function Singup(){
    const dispatch = useDispatch();
    const state = useSelector((state) => {
     return {
-      user: state.user.user,
+      user: state.userReducer,
     };
   });
-
-//   useEffect(() => {
-//     axios
-//       .post("http://localhost:8083/api/user")
-//       .then((response) => setData(response.data))
-//       .catch((error) => console.log(error));
-//   }, []);
 
     const userName = (e) =>{
         setName(e.target.value);
@@ -59,11 +52,14 @@ function Singup(){
         e.preventDefault();
 
         if(password1 == password2){
-        let data ={
-            name: name,
-            phone: PhoneNumber,
-            password: password1
-        }
+            let data = {
+                "user":{
+                "name": name,
+                "phone": PhoneNumber,
+                "password": password1
+                },      
+                    "role_id":2
+            }
 
         console.log(name);
         console.log(password1);

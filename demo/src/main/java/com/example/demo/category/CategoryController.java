@@ -28,6 +28,12 @@ public class CategoryController {
         return categoryService.getCategory(id);
     }
 
+    @GetMapping("/byName/{name}")
+    public List<Category> getCategoryByName(@PathVariable String name){
+        return categoryService.getCategoryByName(name);
+    }
+
+
     @PutMapping("/{id}")
     public void updateCategory(@PathVariable String id, @RequestBody Category category){
         categoryService.updateCategory(id, category);

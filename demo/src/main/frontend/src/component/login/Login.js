@@ -3,18 +3,19 @@ import {icon} from 'bootstrap'
 import Navbar from "../navbar/Navbar";
 import Singin from "../singup/Singup"
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { addUser } from "../../reducers/user/user";
+//  import { addUser } from "../../reducers/user/user";
 import { Link, useNavigate   } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import './login.css'
+import './login.css';
+import jwt_decode from "jwt-decode";
+import {addUser, addToken}  from "../../reducers/user/action";
 
 function Login(){
 
     const [name, setName] = useState();
     const [password, setPassword] = useState();
-    //const [data, setData] = useState();
     const navigate = useNavigate();
     let result = false
 
@@ -22,23 +23,10 @@ function Login(){
    const dispatch = useDispatch();
    const state = useSelector((state) => {
     return {
-      user: state.user.user,
+      user:  state.userReducer //state.user.user,
     };
   });
 
-
-
-//   useEffect(() => {
-//     axios
-//       .post("http://localhost:8081/login", data)
-//       .then((response) => {
-
-//         console.log(response.data);
-//         const action = setData(response.data)
-//       })
-//       .catch((error) => console.log(error));
-//   });
-// };
 
     const userName = (e) =>{
         setName(e.target.value);
@@ -48,49 +36,44 @@ function Login(){
         setPassword(e.target.value);
     }
 
-    const verification = (e) =>{
 
-    e.preventDefault();
+    const verification = (e) =>{
+      e.preventDefault();
+      const data ={
+        name,
+        password,
+      };
     
-    let data ={
-      name,
-      password,
-    };
+
 
       axios
         .post("http://localhost:8081/login", data)
         .then((response) => {
   
           console.log(response.data);
-          const action = addUser(response.data)
-          dispatch(action);
+          const token = response.data.access_token
+          const decoded = jwt_decode(token);
+
+          console.log(token);
+          console.log(decoded);
+
+          const user_action = addUser({
+            id: decoded.id,
+            name: decoded.sub
+          });
+
+          const token_action = addToken(token);
+
+          dispatch(user_action);
+          dispatch(token_action);
+
+          navigate("/");
 
         })
         .catch((error) => {console.log(error)
       });
   };
 
-    
-
-  //   data.forEach(element => {
-     
-  //   if(element.name == name){
-  //     if(element.password == password)
-  //     { result = true
-  //       dispatch(addUser(element));
-  //       console.log(element);
-  //      }
-  //     else{
-  //       result = false
-  //     }
-  //   }
-    
-  //  });
-
-  // if(result)
-  //  navigate("/");
-    
-  
 
     return(  
 

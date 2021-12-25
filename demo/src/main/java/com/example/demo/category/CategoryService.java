@@ -24,10 +24,16 @@ public class CategoryService {
         return categoryRepository.findById(categoryId).orElse(null);
     }
 
+    public List<Category> getCategoryByName(String name) {
+
+        return categoryRepository.findByCategoryName(name);
+    }
+
     public void updateCategory(String id, Category data) {
         Long updateCategory = Long.parseLong(id);
         Category category = categoryRepository.findById(updateCategory).orElse(null);
-
+        //category.getCategoryName().contains()
+//        categoryRepository.find حل للبحث ع كلمه
         if(category != null){
             category.setCategoryName(data.getCategoryName());
             categoryRepository.save(category);

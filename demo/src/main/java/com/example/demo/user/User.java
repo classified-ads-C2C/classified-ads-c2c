@@ -3,7 +3,6 @@ package com.example.demo.user;
 import com.example.demo.ads.Ads;
 import com.example.demo.role.Role;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -41,6 +40,10 @@ public class User {
 
     public User(){
 
+    }
+    public User(String name, String phone){
+        this.name = name;
+        this.phone = phone;
     }
 
     public User(Long id, String name, String phone, String password,Set<Ads> ads, List<Role> roles) {
@@ -100,13 +103,5 @@ public class User {
         this.roles = roles;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", phone=" + phone +
-                '}';
-    }
+
 }

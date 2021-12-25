@@ -17,8 +17,6 @@ function EditUserInfo(){
     const [password1, setPassword1] = useState();
     const [password2, setPassword2] = useState();
     const [data, setData] = useState();
-    // const errorMsg = document.querySelector(".error-msg");
-    // const successMsg = document.querySelector(".success-msg");
     const navigate = useNavigate();
     let result = false
 
@@ -26,12 +24,18 @@ function EditUserInfo(){
    const dispatch = useDispatch();
    const state = useSelector((state) => {
     return {
-      user: state.user.user,
+      user: state.userReducer,
+      token: state.userReducer.token
     };
   });
 
-  let id =  state.user[0].id
-console.log(id);
+   let id = state.user.user.id
+   let userToken = state.token
+   const config = {
+    headers: {Authorization: `Bearer ${userToken}`}
+   };
+
+    console.log("id => " +  id);
 
     const userName = (e) =>{
         setName(e.target.value);
@@ -49,6 +53,15 @@ console.log(id);
         setPassword2(e.target.value);
     }
 
+    const deleteUser = (e) =>{
+        e.preventDefault();
+
+        axios.delete(`http://localhost:8081/api/user/${id}`, config)
+        .catch((error) => console.log(error));
+
+        navigate("/");
+    }
+
     const verificationUserName = (e) =>{
 
         e.preventDefault();
@@ -61,12 +74,10 @@ console.log(id);
         console.log(data);
         console.log(state.user);
         
-        axios.put(`http://localhost:8081/api/useredit/name/${id}`, data)
+        axios.put(`http://localhost:8081/api/user/edit/name/${id}`, data, config)
           .catch((error) => console.log(error));
 
-          
-            // successMsg.style.opacity = 1;
-            // errorMsg.style.opacity = 0;
+
 
 
     }
@@ -84,15 +95,13 @@ const verificationUserPhoneNumber = (e) =>{
     }
 
     console.log(data);
+    console.log(userToken);
 
     
-    axios.put(`http://localhost:8081/api/user/edit/phone/${id}`, data)
+    axios.put(`http://localhost:8081/api/user/edit/phone/${id}`, data, config)
       .catch((error) => console.log(error));
 
       
-        // successMsg.style.opacity = 1;
-        // errorMsg.style.opacity = 0;
-
 
 }
 
@@ -111,21 +120,18 @@ const verificationUserPassword = (e) =>{
     console.log(data);
 
     
-    axios.put(`http://localhost:8081/api/user/edit/password/${id}`, data)
+    axios.put(`http://localhost:8081/api/user/edit/password/${id}`, data, config)
       .catch((error) => console.log(error));
 
-      
-        // successMsg.style.opacity = 1;
-        // errorMsg.style.opacity = 0;
-
-
-}
-else{
     
-    // errorMsg.style.opacity = 1;
-    // successMsg.style.opacity = 0;
+
 
 }
+    else{
+    
+  
+
+    }
 }
 
 
@@ -133,25 +139,26 @@ else{
 
         <div>
             <Navbar/>
-            <div className="success-msg">
-               <p> <b>ممتاز!</b>تم انشاء حساب جديد بنجاح </p> 
-            </div>    
             <div className="wrapper">
+                <div>
+                 <button type="submit" className=" btn btn-danger" onClick={deleteUser}>حذف الحساب</button>
+                </div>
                 <div id="formContent">
                 <h2 className="active">اعادة تعيين المعلومات الشخصة</h2>
-                <form>
-                    <button type="submit" className="button" onClick={verificationUserName}>اعادة تعيين</button>
-                    <input type="text"  placeholder="اسم المستخدم" onChange={userName}/>                   
+                <form>                  
+                    <input type="text"  placeholder="اسم المستخدم" onChange={userName}/>           
+                    <button type="submit" className="button" onClick={verificationUserName}>اعادة تعيين</button>        
                 </form>
-                <form>
-                    <button type="submit" className="button" onClick={verificationUserPhoneNumber}>اعادة تعيين</button>              
-                    <input type="text"  placeholder="رقم الجوال" onChange={userPhoneNumber}/>                  
+                <form>                            
+                    <input type="text"  placeholder="رقم الجوال" onChange={userPhoneNumber}/>      
+                    <button type="submit" className="button" onClick={verificationUserPhoneNumber}>اعادة تعيين</button>               
                    
                 </form>
-                <form>
-                    <button type="submit" className="button" onClick={verificationUserPassword}>اعادة تعيين</button>
+                <form>               
                     <input type="password"  placeholder="الرقم السري" onChange={userPassword1}/>
-                    <input type="password" id="input-password2" placeholder=" اعد كتابة الرقم السري" onChange={userPassword2}/>                  
+                    <button type="submit" className="button" onClick={verificationUserPassword}>اعادة تعيين</button>   
+                    <input type="password" id="input-password2" placeholder=" اعد كتابة الرقم السري" onChange={userPassword2}/> 
+                                
                 </form>               
                 </div>
             </div>
