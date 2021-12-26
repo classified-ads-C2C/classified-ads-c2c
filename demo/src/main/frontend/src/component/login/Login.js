@@ -54,9 +54,6 @@ function Login(){
           const token = response.data.access_token
           const decoded = jwt_decode(token);
 
-          console.log(token);
-          console.log(decoded);
-
           const user_action = addUser({
             id: decoded.id,
             name: decoded.sub

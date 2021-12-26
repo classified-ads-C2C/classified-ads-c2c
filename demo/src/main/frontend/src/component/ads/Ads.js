@@ -7,7 +7,6 @@ import "./ads.css"
 
 function Ads(props){
 
-    //params.adsId
 
     const params = useParams()
     const [data, setData] = useState();
@@ -26,8 +25,7 @@ function Ads(props){
                
         <div>
             <Navbar/>
-            {console.log(data)}
-            { data ? (
+            { data && (
         <div className="ads-card">
             <div className="adsImage">
                 <img className="ads-img" src={data.image}  alt="..." />
@@ -39,7 +37,7 @@ function Ads(props){
             </div>
             
         </div>
-            ): (console.log("")) } 
+            ) } 
         </div>
     )
 

@@ -59,15 +59,7 @@
      margin: auto;
      max-Width: 450px
 }
-/* form.example input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 80%;
-    background: #f1f1f1;
-  }
-   */
+
   form.example button {
     width: 10%;
     height: 50px;
@@ -81,19 +73,13 @@
     border-left: none;
     cursor: pointer;
   }
-  /* input{
-    margin-right: -100px;
-  } */
+
   
   form.example button:hover {
     background: #0b7dda;
   }
   
-  /* form.example::after {
-    content: "";
-    clear: both;
-    display: table;
-  } */
+
 
   /********** [nav]**************/
 

@@ -34,13 +34,8 @@ function EditCard(props){
     
   
     useEffect(async () => {
-        let result = await axios(
-          `http://localhost:8081/api/ads/${params.adsId}` 
-        );
-    
+        const result = await axios.get(`http://localhost:8081/api/ads/${params.adsId}`);
         setData(result.data);
-        console.log(result.data);
-
         setadsTitle(result.data.title)
         setadsLocation(result.data.location)
         setadsDescription(result.data.description)
@@ -89,7 +84,7 @@ function EditCard(props){
         data.append('upload_preset', 'adsimage')
         setLoading(true)
 
-        const res = await fetch("https://api.cloudinary.com/v1_1/elmelm/image/upload",{ //codingshiksha
+        const res = await axios.get("https://api.cloudinary.com/v1_1/elmelm/image/upload",{ 
             method:'POST',
             body:data
         })
@@ -135,7 +130,7 @@ function EditCard(props){
 
         <div>
             <Navbar/>
-            { data ? (
+            { data && (
             <form>
            
           <div className="ads-from">
@@ -161,7 +156,7 @@ function EditCard(props){
         </div>
       
       </form>
-         ): (console.log("")) } 
+         ) } 
         </div>
     )
 }

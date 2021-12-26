@@ -20,17 +20,15 @@ function Home(){
      };
    });
  
-    let id = state.user.user.id
-    let userToken = state.token
+    const id = state.user.user.id
+    const userToken = state.token
     const config = {
      headers: {Authorization: `Bearer ${userToken}`}
     };
 
 
     useEffect(async () => {
-      let result = await axios(
-        'http://localhost:8081/api/ads',
-      );
+      const result = await axios.get('http://localhost:8081/api/ads');
   
       setData(result.data);
     },[]);
@@ -42,8 +40,7 @@ function Home(){
         .get("http://localhost:8081/api/ads")
         .then((response)=>{setData(response.data)})
         .catch((error)=>{console.log(error);})
-              
-        console.log(data);
+
 
     }
 
@@ -65,8 +62,7 @@ function Home(){
         .get("http://localhost:8081/api/category/byName/real estate")
         .then((response)=>{setData(response.data[0].ads)})
         .catch((error)=>{console.log(error);})
-              
-        console.log(data);
+
     }
 
     const devices = (e) =>{
@@ -77,7 +73,6 @@ function Home(){
         .then((response)=>{setData(response.data[0].ads)})
         .catch((error)=>{console.log(error);})
               
-        console.log(data);
   
     }
 

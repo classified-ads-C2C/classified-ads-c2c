@@ -29,13 +29,11 @@ function EditUserInfo(){
     };
   });
 
-   let id = state.user.user.id
-   let userToken = state.token
+   const id = state.user.user.id
+   const userToken = state.token
    const config = {
     headers: {Authorization: `Bearer ${userToken}`}
    };
-
-    console.log("id => " +  id);
 
     const userName = (e) =>{
         setName(e.target.value);
@@ -67,12 +65,9 @@ function EditUserInfo(){
         e.preventDefault();
 
       
-        let data ={
+        const data ={
             name: name
         }
-    
-        console.log(data);
-        console.log(state.user);
         
         axios.put(`http://localhost:8081/api/user/edit/name/${id}`, data, config)
           .catch((error) => console.log(error));
@@ -89,13 +84,10 @@ const verificationUserPhoneNumber = (e) =>{
     e.preventDefault();
 
   
-    let data ={
+    const data ={
       
         phone: PhoneNumber      
     }
-
-    console.log(data);
-    console.log(userToken);
 
     
     axios.put(`http://localhost:8081/api/user/edit/phone/${id}`, data, config)
@@ -116,8 +108,6 @@ const verificationUserPassword = (e) =>{
 
         password: password1
     }
-
-    console.log(data);
 
     
     axios.put(`http://localhost:8081/api/user/edit/password/${id}`, data, config)
