@@ -1,0 +1,16 @@
+
+.ads-card{
+    margin: 10px;
+    margin-bottom: 50px;
+}
+.ads-img{
+    width: 500px;
+    height: 600px;
+    border-radius: 2%;
+
+}
+.ads-body{
+    margin-top: 5px;
+    width: 1100px;
+    background-color: #ccc;
+}

@@ -1,6 +1,5 @@
 package com.example.demo.category;
 
-import com.example.demo.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +22,11 @@ public class CategoryService {
     public Category getCategory(String id) {
         Long categoryId =Long.parseLong(id);
         return categoryRepository.findById(categoryId).orElse(null);
+    }
+
+    public List<Category> getCategoryByName(String name) {
+
+        return categoryRepository.findByCategoryName(name);
     }
 
     public void updateCategory(String id, Category data) {
