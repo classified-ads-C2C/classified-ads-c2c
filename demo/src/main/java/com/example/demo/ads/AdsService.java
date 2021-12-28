@@ -1,5 +1,6 @@
 package com.example.demo.ads;
 
+import com.example.demo.category.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,11 @@ public class AdsService {
     public void deleteAds(String id) {
         Long deleteId = Long.parseLong(id);
         adsRepository.deleteById(deleteId);
+    }
+
+    public List<Ads> getAdsByName(String keyword) {
+
+        return adsRepository.search(keyword);
     }
 
 }

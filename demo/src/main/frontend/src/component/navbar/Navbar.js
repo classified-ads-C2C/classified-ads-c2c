@@ -4,12 +4,17 @@ function Navbar(){
 
     return(
         <div>
-        <div className="header">
-        <Link to="/">
-            <i class="bi bi-house-door"></i>
-        </Link>
+            <div className="header">
+            <div className='home-navbar'>
+            <Link to="/">
+            
+                <i class="bi bi-house-door"></i>
+                <p className='leble-icon-nav'>الرئيسية</p>
+            </Link>
+            </div>
+            </div>
         </div>
-        </div>
+
     )
 
 }

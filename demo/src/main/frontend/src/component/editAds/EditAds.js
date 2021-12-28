@@ -47,28 +47,26 @@ function EditAds(){
         })
         .catch((error)=>{console.log(error);})
               
-        console.log("inside");
-        console.log(index);
+
     }
     return(
 
         <div>
             <Navbar/>
-            
-            
+ 
         <div class="all-ads">
         { data.map(ads => (
         <div className="ads" >
-        <img src={ads.image} className="card-img-top" alt={ads.title} />
+        <img id="ads-home" src={ads.image} className="card-img-top" alt={ads.title} />
         <div className="card-body">
           <h5 className="card-title ">{ads.title}</h5>
           <p className="card-text">{ads.description}</p>
           <p className="card-text"><small className="text-muted">{ads.location}</small></p>
-          <button className="btn btn-danger"><i class="bi bi-display" onClick={ (e)=> {deleteAds(e, ads.id) }}>حذف الاعلان</i></button> 
+          <button className="btn btn-danger ms-1"><i  onClick={ (e)=> {deleteAds(e, ads.id) }}>حذف الاعلان</i></button> 
           <Link to={{
             pathname: `/editCard/${ads.id}`
         }} >
-             <button className="btn btn-secondary"><i class="bi bi-display" >تعديل الاعلان</i></button> 
+             <button className="btn btn-secondary"><i>تعديل الاعلان</i></button> 
               </Link>
         </div>    
         </div>

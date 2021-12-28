@@ -2,12 +2,22 @@
 
 .header{
     width: auto;
-    height: 65px;
+    height: 83px;
     background-color: #1877F2;
 }
 
+.home-navbar{
+    width: 100px;
+    margin-top: 8px;
+    display: inline-block;
+}
 .bi-house-door{
-    margin-left: 1400px;
-    font-size: 35px;
+    margin-right: 50px;
+    font-size: 25px;
     color: #fff;
 }
+.leble-icon-nav{
+    color: #fff;
+    margin-right: 40px;
+}
+

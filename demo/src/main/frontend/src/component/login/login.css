@@ -52,7 +52,7 @@
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     font-size: 16px;
     margin: 5px;
     width: 85%;
@@ -101,21 +101,6 @@ h2.login-active {
   width: 100%;
 }
 
-.login-button{
-    border: none;
-    margin-left: 170px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 90px;
-    height: 40px;
-    display: block;
-    background-color: #1877F2;
-    border-radius: 8%;
-    color: #fff;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    font-size: 15px;
-}
 
 .login-button:hover{
     background-color: #0d0d0d;

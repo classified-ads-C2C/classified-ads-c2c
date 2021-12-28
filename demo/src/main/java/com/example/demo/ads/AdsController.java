@@ -1,5 +1,6 @@
 package com.example.demo.ads;
 
+import com.example.demo.category.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -37,5 +38,10 @@ public class AdsController {
     @DeleteMapping("/{id}")
     public void deleteAds(@PathVariable String id){
         adsService.deleteAds(id);
+    }
+
+    @GetMapping("/search/{keyword}")
+    public List<Ads> getAdsByName(@PathVariable String keyword){
+        return adsService.getAdsByName(keyword);
     }
 }

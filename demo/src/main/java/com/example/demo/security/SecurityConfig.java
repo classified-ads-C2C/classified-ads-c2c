@@ -52,10 +52,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             cors.setAllowedHeaders(List.of("*"));
             return cors;});
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
+        http.authorizeRequests().antMatchers(POST,"/api/user/**").permitAll();
         http.authorizeRequests().antMatchers(GET,"/api/user/**").hasAnyAuthority("user");
         http.authorizeRequests().antMatchers(POST,"/api/roles").permitAll();
         http.authorizeRequests().antMatchers("/api/category/byName/**").permitAll();
+        http.authorizeRequests().antMatchers("/api/ads/search/**").permitAll();
         http.authorizeRequests().antMatchers(POST,"/api/ads/**").hasAnyAuthority("user");
         http.authorizeRequests().antMatchers(DELETE,"/api/ads/**").hasAnyAuthority("user");
         http.authorizeRequests().antMatchers(PUT,"/api/ads/**").hasAnyAuthority("user");

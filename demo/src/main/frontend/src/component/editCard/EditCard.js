@@ -1,6 +1,7 @@
 import Navbar from "../navbar/Navbar";
 import { useParams } from "react-router-dom"
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate   } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
 
@@ -12,11 +13,11 @@ function EditCard(props){
     const [adsTitle, setadsTitle] = useState();
     const [adsLocation, setadsLocation] = useState();
     const [adsDescription, setadsDescription] = useState();
-    const [category, setCategory] = useState(0);
+    const [category, setCategory] = useState(1);
     const [adsImage, setadsImage] = useState();
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState("")
-
+    const navigate = useNavigate();
     let file
     const state = useSelector((state) => {
      return {
@@ -61,19 +62,22 @@ function EditCard(props){
     const categoryRealEstate = (e) => {
       e.preventDefault();
 
-      category = 1
+      setCategory(2)
+      document.querySelector('#categoryTitle').innerHTML = "عقار"
     }
 
     const categoryCar = (e) => {
       e.preventDefault();
 
-      setCategory(2)
+      setCategory(3)
+      document.querySelector('#categoryTitle').innerHTML = "مركبة"
     }
 
     const categoryDevices = (e) => {
       e.preventDefault();
 
-      setCategory(3)
+      setCategory(4)
+      document.querySelector('#categoryTitle').innerHTML = "اجهزة"
     }
 
     const uploadImage = async (e) =>{
@@ -84,16 +88,13 @@ function EditCard(props){
         data.append('upload_preset', 'adsimage')
         setLoading(true)
 
-        const res = await axios.get("https://api.cloudinary.com/v1_1/elmelm/image/upload",{ 
-            method:'POST',
-            body:data
-        })
-
-         file = await res.json()
-
-        console.log(file.secure_url);
-        setImage(file.secure_url)
+        const res = await axios.post("https://api.cloudinary.com/v1_1/elmelm/image/upload", data)
+        .then((res) =>{
+        file = true
+        setImage(res.data.secure_url)
         setLoading(false)
+        
+        });
     }
 
     const postAds = (e) =>{
@@ -116,10 +117,7 @@ function EditCard(props){
         axios
           .put(`http://localhost:8081/api/ads/${params.adsId}`, data, config)
           .then((response) => {
-    
-            console.log(response.data);
-  
-  
+            navigate("/editAds");
           })
           .catch((error) => {console.log(error)
         });
@@ -149,9 +147,10 @@ function EditCard(props){
               <button className="dropdown-item" type="button" onClick={categoryCar}>مركبة</button>
               <button className="dropdown-item" type="button" onClick={categoryDevices}>اجهزة</button>
               </ul>
+              <h5 id="categoryTitle"></h5>
             </div>
           <label>اضف الصور</label>
-          <input type="file" className="form-control-file" onChange={uploadImage}/>
+          <input type="file" className="form-control-file image-upload" onChange={uploadImage}/>
         <button type="submit" className="btn btn-primary" onClick={postAds}>ارسال</button>
         </div>
       

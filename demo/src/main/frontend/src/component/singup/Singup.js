@@ -73,6 +73,8 @@ function Singup(){
           
             successMsg.style.opacity = 1;
             errorMsg.style.opacity = 0;
+            navigate("/login")
+
 
 
     }

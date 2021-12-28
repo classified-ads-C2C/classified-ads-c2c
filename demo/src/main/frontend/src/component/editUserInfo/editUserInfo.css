@@ -145,3 +145,12 @@
       margin-bottom: 50px;
 
   }
+
+  .success-msg-edit {
+    color: #270;
+    background-color: #DFF2BF;
+    margin-left: 1150px;
+    margin-right: 90px;
+    padding: 10px;
+    opacity: 0;
+  }

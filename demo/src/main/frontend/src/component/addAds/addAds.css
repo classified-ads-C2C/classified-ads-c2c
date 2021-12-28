@@ -1,11 +1,15 @@
 .ads-from{
     margin-top: 50px;
-    margin-right: 20px;
+    margin-right: 100px;
     width: 700px;
 
 }
 label{
-   margin-top: 10px;
+   margin-top: 15px;
+   margin-bottom: 5px;
+}
+.image-upload{
+    display: block;
 }
 .btn-primary{
     margin-top: 20px;
@@ -13,4 +17,12 @@ label{
 .dropdown{
     margin-top: 20px;
     margin-bottom: 20px;
+}
+.register-btn{
+    cursor: not-allowed;
+  }
+
+#categoryTitle{
+    display: inline-block;
+    margin-right: 8px;
 }

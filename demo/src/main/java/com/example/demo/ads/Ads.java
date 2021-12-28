@@ -15,6 +15,7 @@ public class Ads{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
+    @Column(length = 65555)
     private String description;
     private String image;
     private String location;

@@ -25,7 +25,7 @@ const userReducer = (state = initialState, { type, payload }) => {
       localStorage.removeItem("user");
       return {
         user: {},
-        token:undefined
+        token: undefined
       };
 
     default:

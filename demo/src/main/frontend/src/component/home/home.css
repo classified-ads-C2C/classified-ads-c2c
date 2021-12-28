@@ -1,49 +1,89 @@
 
 /**********  [header]  **********/
 
-.header{
+.home-header{
     width: auto;
-    height: 65px;
+    height: 83px;
     background-color: #1877F2;
 }
 
 .bi-house-door{
-    margin-left: 1400px;
-    font-size: 35px;
+  
+    font-size: 25px;
     color: #fff;
 }
 .bi-person-circle{
-    margin-left: 500px;
-    font-size: 35px;
+  
+    font-size: 25px;
     color: #fff;
 }
 .bi-plus-lg{
-  margin-left: 500px;
-    font-size: 35px;
+    font-size: 25px;
     color: #fff;
 }
 .bi-box-arrow-in-left{
-  margin-left: 500px;
-  font-size: 35px;
+
+  font-size: 25px;
   color: #fff;
 }
 .bi-pencil-square{
-  margin-left: 500px;
-  font-size: 35px;
+ 
+  font-size: 25px;
   color: #fff;
 }
 
-.home, .edit, .add-ads, .editAds, .home-login{
-    width: 100px;
-    margin-top: 15px;
-    display: inline-block;
+.leble-icon-home{
+  color: #fff;
+  margin-right: 40px;
+}
 
+.leble-icon-edit{
+  color: #fff;
+  margin-right: -10px;
+}
+
+.leble-icon-addAds{
+  color: #fff;
+  margin-right: -20px;
+}
+
+.leble-icon-editAds{
+  color: #fff;
+  margin-right: -10px;
+}
+
+.leble-icon-login{
+  color: #fff;
+  margin-right: -10px;
+}
+
+.home, .edit, .add-ads, .editAds, .home-login, .home-login{
+    width: 100px;
+    margin-top: 8px;
+    display: inline-block;
+}
+
+.edit{
+  margin-right: 43px;
+}
+
+.home-login{
+  margin-right: 30px;
+
+}
+
+.editAds{
+  margin-left: 900px;
 }
 
 .btn-light{
   width: 100px;
   margin-top: -20px;
 
+}
+
+#logout{
+  margin-top: -40px;
 }
 
 #logout:hover {
@@ -54,6 +94,7 @@
 /*************** [search] ****************/
 .search{
     margin-top: 30px;
+    margin-right: 115px;
 }
 .example{
      margin: auto;
@@ -115,16 +156,49 @@
 
   .home-button{
     margin-left: 5px;
+    border: 1px solid #fff;
+    background-color: #1877F2;
+  }
+
+
+  ul{
+    padding: 10px;
+    text-align: center;
   
   }
+
+  .category-nav{
+    margin-top: 40px;
+  }
+
+
 
   /****** [all ads] *******/
 
   .all-ads{
     margin-top: 50px  ;
+    margin-right: 100px;
   }
   .ads{
     width: 400px;
     display: inline-block;
     margin: 15px;
   }
+
+  #ads-home{
+    width: 400px;
+    height: 300px;
+  }
+
+  .card-title{
+
+    height: 75px;
+    overflow: hidden;
+  }
+  .card-text{
+    height: 75px;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+
+
