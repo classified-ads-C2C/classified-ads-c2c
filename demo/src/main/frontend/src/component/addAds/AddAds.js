@@ -19,8 +19,9 @@ function AddAds(){
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState("")
     const dispatch = useDispatch();
-    let file
-    let category = 0
+    const navigate = useNavigate();
+    let file = false
+    let category = 1
     const state = useSelector((state) => {
      return {
        user: state.userReducer,
@@ -50,19 +51,23 @@ function AddAds(){
     const categoryRealEstate = (e) => {
       e.preventDefault();
 
-      category = 1
+      category = 2
+      document.querySelector('#categoryTitle').innerHTML = "عقار"
+      
     }
 
     const categoryCar = (e) => {
       e.preventDefault();
 
-      category = 2
+      category = 3
+      document.querySelector('#categoryTitle').innerHTML = "مركبة"
     }
 
     const categoryDevices = (e) => {
       e.preventDefault();
 
-      category = 3
+      category = 4
+      document.querySelector('#categoryTitle').innerHTML = "اجهزة"
     }
 
     const uploadImage = async (e) =>{
@@ -73,16 +78,14 @@ function AddAds(){
         data.append('upload_preset', 'adsimage')
         setLoading(true)
 
-        const res = await fetch("https://api.cloudinary.com/v1_1/elmelm/image/upload",{ //codingshiksha
-            method:'POST',
-            body:data
-        })
-
-         file = await res.json()
-
-        console.log(file.secure_url);
-        setImage(file.secure_url)
+        const res = await axios.post("https://api.cloudinary.com/v1_1/elmelm/image/upload", data)
+        .then((res) =>{
+        file = true
+        setImage(res.data.secure_url)
         setLoading(false)
+        
+        });
+
     }
 
     const postAds = (e) =>{
@@ -111,10 +114,11 @@ function AddAds(){
     
             console.log(response.data);
   
-  
           })
           .catch((error) => {console.log(error)
         });
+
+        navigate("/editAds");
     };
   
       
@@ -133,16 +137,18 @@ function AddAds(){
             <div className="dropdown">
               <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
               التصنيف
+              
               </button>
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <ul className="dropdown-menu">
               <button className="dropdown-item" type="button" onClick={categoryRealEstate}>عقار</button>
               <button className="dropdown-item" type="button" onClick={categoryCar}>مركبة</button>
               <button className="dropdown-item" type="button" onClick={categoryDevices}>اجهزة</button>
-              </ul>
+              </ul>   
+              <h5 id="categoryTitle"></h5>
             </div>
-          <label>اضف الصور</label>
-          <input type="file" className="form-control-file" onChange={uploadImage}/>
-        <button type="submit" className="btn btn-primary" onClick={postAds}>ارسال</button>
+          <label className='image-upload'>اضف الصور</label>
+          <input type="file" className="form-control-file image-upload" onChange={uploadImage}/>
+        <button type="submit" className="btn btn-primary" onClick={postAds} >ارسال</button>
         </div>
         
       </form>

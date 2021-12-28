@@ -3,7 +3,6 @@ import {icon} from 'bootstrap'
 import Navbar from "../navbar/Navbar";
 import Singin from "../singup/Singup"
 import "bootstrap-icons/font/bootstrap-icons.css";
-//  import { addUser } from "../../reducers/user/user";
 import { Link, useNavigate   } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -81,8 +80,11 @@ function Login(){
                 <h2 className="login-active">تسجيل الدخول</h2>
                 <form>
                     <input type="text"  placeholder="اسم المستخدم او رقم الجوال" onChange={userName}/>
-                    <input type="password" placeholder="الرقم السري" onChange={userPassword}/>
-                    <button type="submit" className="login-button" onClick={verification}>دخول</button>
+                    <input id="input-pass" type="password" placeholder="الرقم السري" onChange={userPassword}/>
+                    <div id="error-msg-holder">
+                        <p className="error-msg">الرقم السري غير متطابق</p>
+                    </div> 
+                    <button type="submit" className="button" onClick={verification}>دخول</button>
                 </form>
                 <div id="login-formFooter">
                     <Link to="/singup">
